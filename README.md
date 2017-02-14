@@ -1,5 +1,7 @@
 # Tic Tac Toe
 
+This is an implementation of the classic game Tic Tac Toe. It consists of a web UI and a REST service. The REST service manages the games and implements the game engine. The game engien's AI is based on the minimax algorithm which makes the AI unbeatable.
+
 ![tic tac toe screenshot](screenshot.png)
 
 ## Get the sources
