@@ -1,0 +1,70 @@
+.field {
+  width: 150px;
+  height: 150px;
+  background: #B9DEEB;
+  border-radius: 15px;
+  box-shadow: 2px 2px 2px #888888;
+  text-align: center;
+  vertical-align: middle;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 110px;
+  display: table-cell;
+  font-weight: bold;
+}
+.error {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 24px;
+  text-align: center;
+  color: #a02020;
+  font-weight: bold;
+  height: 30px;
+}
+.heading {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 83px;
+  text-align: center;
+  border-radius: 25px;
+  border: 1px solid #DA9484;
+  background: #b35900;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  color: #ffffff;
+  text-shadow: 1px 1px #888888;
+}
+.status {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 33px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.row {
+  display: table-row;
+}
+.table {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  border-spacing: 10px;
+}
+.bodystyle {
+	background: #E0F3FA
+}
+.again {
+  position: relative;
+  top: 0px;
+  left: 50%;
+  width: 250px;
+  height: 75px;
+  background-color: #a02020;
+  margin-left: -125px;
+  border-radius: 10px;
+  text-align: center;
+  vertical-align: middle;
+  color: #ffffff;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 50px;
+  box-shadow: 2px 2px 2px #888888;
+  line-height: 70px;
+  cursor: pointer;
+}
