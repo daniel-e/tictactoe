@@ -1,7 +1,11 @@
+# Tic Tac Toe
+
+![tic tac toe screenshot](screenshot.png)
+
 ## Get the sources
 
 ```
-
+git clone https://github.com/daniel-e/tictactoe.git
 ```
 
 # start
