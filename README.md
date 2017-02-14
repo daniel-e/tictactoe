@@ -1,44 +1,64 @@
 # Tic Tac Toe
 
-This is an implementation of the classic game Tic Tac Toe. It consists of a web UI and a REST service. The REST service manages the games and implements the game engine. The game engien's AI is based on the minimax algorithm which makes the AI unbeatable.
+This is an implementation of the classic game Tic Tac Toe. It consists of a web UI and a REST service. The REST service manages the games and implements the game engine. The game engine's AI is based on the minimax algorithm which makes the AI unbeatable.
 
 ![tic tac toe screenshot](screenshot.png)
 
+# Setup
+
+The REST service is a standalone Python script which is listening on port 5000 for requests. The web UI is a simple JavaScript application.
+
 ## Get the sources
 
-```
+To play Tic Tac Toe get the sources first and change into the `tictactoe` directory.
+
+```bash
 git clone https://github.com/daniel-e/tictactoe.git
+cd tictactoe
+```
+
+## Install a Nginx web server
+
+```bash
+tar xzf extra/nginx-1.10.3.tar.gz
+cd nginx-1.10.3/
+./configure --prefix=/opt/nginx
+make -j4
+make install
+cd ..
+rm -rf nginx-1.10.3/
+```
+
+```bash
+mv /opt/nginx/html /opt/nginx/html.orig
+ln -s $PWD/html /opt/nginx/html
+```
+
+### Configure Nginx
+
+Modify the `server` section in `/opt/nginx/conf/nginx.conf` as follows:
+```
+server {
+  listen       10000;
+  server_name  localhost;
+  # redirect calls to the REST service to port 5000
+  location ~ ^/(new|status|set) {
+    proxy_pass    http://127.0.0.1:5000;
+  }
+  location / {
+    root   html;
+    index  index.html;
+  }
+}
 ```
 
 # start
+
 In root directory: ./rest.py
 starts the rest service on port 5000
 
-## Install Nginx
-nginx nach /opt/nginx installieren
+/opt/nginx/sbin/nginx
 
-Softlink in /opt/nginx/ anlegen:
-ln -s ~/Dropbox/github/testing/ttt_ai/html/ html
-
-/opt/nginx/conf/nginx.conf
-    server {
-        listen       10000;
-        server_name  localhost;
-
-        location /new {
-            proxy_pass    http://127.0.0.1:5000;
-        }
-        location /status {
-            proxy_pass    http://127.0.0.1:5000;
-        }
-        location /set {
-            proxy_pass    http://127.0.0.1:5000;
-        }
-        location / {
-            root   html;
-            index  index.html index.htm;
-        }
-    }
 
 pkill -HUP nginx
 ------------------------------------------------------------------------------
