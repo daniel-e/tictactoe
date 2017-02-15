@@ -9,14 +9,6 @@ class TicTacToe():
 	STATUS_TURN_AI = 4
 	STATUS_DRAW = 5
 
-	# required for functools.lru_cache
-	def __hash__(self):
-		return hash("".join([str(i) for i in self.board]))
-	def __eq__(self, o):
-		return self.board.__eq__(o.board)
-	def __cmp__(self, o):
-		return self.board.__cmp__(o.board)
-
 	def __init__(self):
 		self.w = 3
 		self.h = 3
@@ -91,6 +83,8 @@ class TicTacToe():
 		return [(x, y) for y in h for x in w if self.get(x, y) == self.EMPTY]
 
 	# ---------------------------------------------------------------------
+	# "private" functions
+	# ---------------------------------------------------------------------
 
 	def _update_status(self, player):
 		if self.status in [self.STATUS_DRAW, self.STATUS_AI_WON, self.STATUS_HUMAN_WON]:
@@ -103,9 +97,8 @@ class TicTacToe():
 			self.status = self._next_player()
 
 	def _next_player(self):
-		if self.status == self.STATUS_TURN_AI:
-			return self.STATUS_TURN_HUMAN
-		return self.STATUS_TURN_AI
+		h = self.STATUS_TURN_HUMAN
+		return self.STATUS_TURN_AI if self.status == h else h
 
 	def _full(self):
 		return not any([i == self.EMPTY for i in self.board])

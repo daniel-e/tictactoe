@@ -6,7 +6,7 @@ import uuid, threading
 from flask import Flask, jsonify, abort
 
 from tictactoe import TicTacToe
-from ai import ai_random, ai_minimax
+from ai import ai_minimax
 
 MAX_ENTRIES = 1000000
 store = {}
