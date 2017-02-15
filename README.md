@@ -2,67 +2,41 @@
 
 This is an implementation of the classic game Tic Tac Toe. It consists of a web UI implemented in JavaScript and jQuery and a RESTful web service written in Python using the Flask framework. The RESTful web service manages the games and implements the game engine. The game engine's AI is based on the minimax algorithm which makes the AI unbeatable.
 
-Really nothing new here. I was just bored.
+Actually nothing new here. I was just bored.
 
 ![tic tac toe screenshot](screenshot.png)
 
 # Setup
 
-The REST service is a standalone Python script which is listening on port 5000 for requests. The web UI is a simple JavaScript application.
+The REST service is a standalone Python script which is listening on port 5000 for requests. The web UI is a simple JavaScript application that requires a web server to be delivered. We will configure the web server to listen on port 10000. Furthermore, the web server is used to forward requests to the RESTful web service listening on port 5000. The forwarding is required as due to the same origin policy the JavaScript is not allowed to access responses for requests which are send to a different port.
+
+In the following the steps are described which are required to get Tic Tac Toe running.
 
 ## Get the sources
 
-To play Tic Tac Toe get the sources first and change into the `tictactoe` directory.
+First, we need to get the sources:
 
 ```bash
 git clone https://github.com/daniel-e/tictactoe.git
 cd tictactoe
 ```
 
-## Install a Nginx web server
+## Quick Setup
 
-```bash
-tar xzf extra/nginx-1.10.3.tar.gz
-cd nginx-1.10.3/
-./configure --prefix=/opt/nginx
-make -j4
-make install
-cd ..
-rm -rf nginx-1.10.3/
-```
+Type `make` in the directory `tictactoe` to compile and install the Nginx web server into `/opt/nginx/` and the HTML and JavaScript files into `/opt/nginx/tictactoe`. We use the Nginx web server as it is small and easy to configure. Nginx will be configured as follows:
 
-```bash
-mv /opt/nginx/html /opt/nginx/html.orig
-ln -s $PWD/html /opt/nginx/html
-```
+* listen on port 10000
+* forward requests to the paths /new, /status, /set to port 5000
 
-### Configure Nginx
+# Running Tic Tac Toe
 
-Modify the `server` section in `/opt/nginx/conf/nginx.conf` as follows:
-```
-server {
-  listen       10000;
-  server_name  localhost;
-  # redirect calls to the REST service to port 5000
-  location ~ ^/(new|status|set) {
-    proxy_pass    http://127.0.0.1:5000;
-  }
-  location / {
-    root   html;
-    index  index.html;
-  }
-}
-```
+To run Tic Tac Toe start the RESTful web service by typing `./rest.py` in the source directory.
 
-# start
+After that start the web server by running `/opt/nginx/sbin/nginx`.
 
-In root directory: ./rest.py
-starts the rest service on port 5000
-
-/opt/nginx/sbin/nginx
+Now, open the URL `http://localhost:10000` in your browser and have fun. :)
 
 
-pkill -HUP nginx
 ------------------------------------------------------------------------------
 
 TODO
