@@ -1,6 +1,8 @@
 # Tic Tac Toe
 
-This is an implementation of the classic game Tic Tac Toe. It consists of a web UI and a REST service. The REST service manages the games and implements the game engine. The game engine's AI is based on the minimax algorithm which makes the AI unbeatable.
+This is an implementation of the classic game Tic Tac Toe. It consists of a web UI implemented in JavaScript and jQuery and a RESTful web service written in Python using the Flask framework. The RESTful web service manages the games and implements the game engine. The game engine's AI is based on the minimax algorithm which makes the AI unbeatable.
+
+Really nothing new here. I was just bored.
 
 ![tic tac toe screenshot](screenshot.png)
 
