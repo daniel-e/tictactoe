@@ -35,35 +35,3 @@ To run Tic Tac Toe start the RESTful web service by typing `./rest.py` in the so
 After that start the web server by running `/opt/nginx/sbin/nginx`.
 
 Now, open the URL `http://localhost:10000` in your browser and have fun. :)
-
-
-------------------------------------------------------------------------------
-
-TODO
-* button for new game
-
-# REST interface
-
-## New game
-curl -X POST localhost:5000/new
-
-## Get status of a game
-curl -s -X GET localhost:5000/status/<uid> | jq .
-
-status:
-* HUMAN_WINS
-* AI_WINS
-* WAITING_FOR_AI
-* WAITING_FOR_HUMAN
-* DRAW
-board:
-* X = HUMAN
-* O = AI
-
-## Human move
-curl -v -X POST localhost:5000/set/<ui>/<x>/<y>
-
-response json:
-{
-  "error": "OK"
-}
