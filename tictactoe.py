@@ -1,3 +1,5 @@
+import copy
+
 class TicTacToe():
 	EMPTY = 0
 	HUMAN = 1
@@ -16,12 +18,7 @@ class TicTacToe():
 		self.status = self.STATUS_TURN_HUMAN
 
 	def copy(self):
-		t = TicTacToe()
-		t.w = self.w
-		t.h = self.h
-		t.board = self.board[:]
-		t.status = self.status
-		return t
+		return copy.deepcopy(self)
 
 	def status_str(self):
 		mapping = {

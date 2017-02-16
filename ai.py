@@ -1,12 +1,7 @@
 import random
+from collections import namedtuple
 
-class Score:
-	def __init__(self, score, move):
-		self.score = score
-		self.move = move
-
-	def __lt__(self, o):
-		return self.score.__lt__(o.score)
+Score = namedtuple("Score", "score, move")
 
 def _score(board):
 	if board.state() == board.STATUS_AI_WON:
