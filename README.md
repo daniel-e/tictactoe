@@ -21,7 +21,7 @@ git clone https://github.com/daniel-e/tictactoe.git
 cd tictactoe
 ```
 
-## Quick Setup
+## Install
 
 Type `make` in the directory `tictactoe` to compile and install the Nginx web server into `/opt/nginx/` and the HTML and JavaScript files into `/opt/nginx/tictactoe`. We use the Nginx web server as it is small and easy to configure. Nginx will be configured as follows:
 
