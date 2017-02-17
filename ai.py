@@ -1,4 +1,4 @@
-import random
+import random, os, importlib
 from collections import namedtuple
 
 Score = namedtuple("Score", "score, move")
@@ -27,4 +27,12 @@ def _select_by(b, player, f):
 	return _min_max([Score(_ai_minimax(b, i, player), i) for i in b.empty()], f)
 
 def ai_minimax(t):
-	return _select_by(t, t.AI, max).move
+	if os.path.exists("rustai.so"):
+		data = {
+			"board": t.board,
+			"ai": t.AI,
+			"human": t.HUMAN
+		}
+		return __import__("rustai").minimax(data)
+	else:
+		return _select_by(t, t.AI, max).move
