@@ -1,5 +1,5 @@
 all:
-	docker build --no-cache=false -t tictactoe/1 .
+	docker build --no-cache=false -t test_tictactoe/1 .
 
 run:
-	docker run -t --rm tictactoe/1
+	docker run -t --rm test_tictactoe/1
