@@ -7,5 +7,6 @@ export PATH=$PATH:~/.cargo/bin/
 git clone https://github.com/daniel-e/tictactoe.git
 cd tictactoe/rustai/
 cargo build
-echo -e '\033[1;32m'"OK"'\033[0m'
+cargo test
+echo -e '\033[1;32m'"TEST OK"'\033[0m'
 exit 0
