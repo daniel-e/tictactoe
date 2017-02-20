@@ -8,6 +8,7 @@ git clone https://github.com/daniel-e/tictactoe.git
 cd tictactoe/rustai/
 cargo build
 cargo test
+cd ..
 ./test.py
 echo -e '\033[1;32m'"TEST OK"'\033[0m'
 exit 0
