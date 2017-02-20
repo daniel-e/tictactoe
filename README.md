@@ -2,6 +2,8 @@
 
 This is an implementation of the classic game Tic Tac Toe. It consists of a web UI implemented in JavaScript and jQuery and a RESTful web service written in Python using the Flask framework. The RESTful web service manages the games and implements the game engine. The game engine's AI is based on the minimax algorithm which makes the AI unbeatable.
 
+I also created a Python module written in Rust which implements parts of the game engine. It is much faster than the pure Python implementation and is automatically used if the module exists in the appropriate path (see below).
+
 Actually nothing new here. I was just bored.
 
 ![tic tac toe screenshot](screenshot.png)
@@ -35,3 +37,18 @@ To run Tic Tac Toe start the RESTful web service by typing `./rest.py` in the so
 After that start the web server by running `/opt/nginx/sbin/nginx`.
 
 Now, open the URL `http://localhost:10000` in your browser and have fun. :)
+
+# Use Python module written in Rust
+
+To use the Python module written in Rust do the following steps:
+
+```bash
+# build the module
+cd rustai
+cargo build --release
+# copy the module to the right location
+cp target/release/librustai.so ../rustai.so
+cd ..
+# start the RESTful service
+./rest.py
+```

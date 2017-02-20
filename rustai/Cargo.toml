@@ -7,6 +7,9 @@ authors = ["de"]
 name = "rustai"
 crate-type = ["dylib"]
 
+[dependencies]
+rand = "*"
+
 [dependencies.cpython]
 git = "https://github.com/dgrunwald/rust-cpython.git"
 #default-features = false

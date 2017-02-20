@@ -30,8 +30,6 @@ def ai_minimax(t):
 	if os.path.exists("rustai.so"):
 		data = {
 			"board": t.board,
-			"ai": t.AI,
-			"human": t.HUMAN
 		}
 		return __import__("rustai").minimax(data)
 	else:

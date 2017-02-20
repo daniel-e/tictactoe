@@ -1,2 +1,4 @@
 __pycache__
 rustai/Cargo.lock
+rustai.so
+rustai/target
